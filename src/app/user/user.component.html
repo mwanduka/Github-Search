@@ -1,0 +1,57 @@
+<form (keyup)="findCheck()" #userForm="ngForm">
+   <div class="form-group">
+
+       <input type="text" placeholder="Search User" [(ngModel)]="userName" name="userName">
+   </div>
+   <!--<button type="Submit" class="btn btn-success btn-lg">Search User</button>-->
+</form>
+
+     <div class="row">
+       <div class="col-md-3 col-lg-3 " > <img alt="User Pic" src="{{ user.avatar_url }}" class="img-circle img-responsive"> </div>
+
+       <div class=" col-md-9 col-lg-9 ">
+         <table class="table table-user-information">
+           <tbody>
+             <tr>
+               <td>Full Name: </td>
+               <td>{{ user.fname}}</td>
+             </tr>
+             <tr>
+               <td>Repositories:</td>
+               <td>
+                 <tr>
+                   <td>
+                     {{user.repos_url}}
+                   </td>
+                   <td>
+                       <a href="{{user.repo_url}}" class="btn btn-primary">View All</a>
+                   </td>
+                 </tr>
+
+               </td>
+
+             </tr>
+             <tr>
+               <td>Followers</td>
+               <td>{{ user.followers_url }}</td>
+             </tr>
+
+                <tr>
+                    <tr>
+               <td>Following</td>
+               <td>{{ user.following_url}}</td>
+             </tr>
+               <tr>
+               <td>Created</td>
+               <td>{{user.joinedOn | DaysAgo}}</td>
+             </tr>
+
+
+           </tbody>
+         </table>
+
+         <a href="{{user.repo_url}}" class="btn btn-primary">View User on Github</a>
+       </div>
+     </div>
+   </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="contain row">
+  <div *ngFor="let repo of repos">
+    <div *ngIf="repo.display" id="repos">
+      <p>Title: {{repo.name}}</p>
+      <p>Language: {{repo.language}}</p>
+      <p>Stars: {{repo.stars}}</p>
+      <button class="btn btn-info btn-sm repo-link"><a target="_blank" id="repoLink" class="text-white" href={{repo.url}}>View on Github</a></button>
+    </div>
+  </div>
+</div>
