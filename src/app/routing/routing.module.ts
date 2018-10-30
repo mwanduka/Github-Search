@@ -6,10 +6,10 @@ import {UserComponent} from "../user/user.component"
 
 // Defining routes
 const routes:Routes = [
-  {path:"github",component:GithubComponent},
-  {path:"user",component:UserComponent},
-  {path:"",redirectTo:"/github",pathMatch:"full"},
-]
+  {path: '', component: GithubComponent},
+ {path: 'user/repo?', component: RepoDetailsComponent},
+ {path: 'user/profile?', component: UserComponent }
+];
 
 @NgModule({
   imports: [

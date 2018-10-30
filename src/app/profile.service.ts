@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class ProfileService {
-  user: Users;
+  user: User;
   repo: Repo;
   newRepo: any;
   newUser: any;
@@ -19,8 +19,8 @@ export class ProfileService {
 
   constructor(private http: HttpClient) {
 
-    this.user = new Users ();
-    this.repo = new Repo();
+    this.user = new User ("","","","", new Date);
+    this.repo = new Repo("","","");
     console.log('Service Works!');
     this.userName = 'mwanduka';
 
@@ -41,7 +41,7 @@ export class ProfileService {
       '?access_token=' + environment.apiUrl)
 
       .toPromise().then(response => {
-        this.user.Repo_url = response.public_repos;
+        this.user.repos_url = response.public_repos;
         this.user.fname = response.name;
         this.user.joined_on = response.joined_on;
         this.user.repos_url = response.html_url;

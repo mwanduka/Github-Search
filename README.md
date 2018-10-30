@@ -4,26 +4,17 @@ This is an appliction used to view once repositories in the Github andthe follow
 
 ### By Mwanduka Stephen published on 26th October 2018
 
-
-
-## Code scaffolding
-
-
-
-## Build
-
-
 ## Technologies Used
 
-*Typescript
+Typescript
 
-*Angular CLI
+Angular CLI
 
-*Markdown
+Markdown
 
-*Html
+Html
 
-*CSS
+CSS
 
 ## Link to site
 
