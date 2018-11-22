@@ -19,6 +19,7 @@ CSS
 ## Link to site
 
 Project's live link to the site:
+https://mwanduka.github.io/Github-Search/
 
 ## Further help
 

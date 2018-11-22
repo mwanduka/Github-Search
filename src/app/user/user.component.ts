@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../user';
 import { Repo } from '../repo';
 import { getResponseURL } from '@angular/http/src/http_utils';
+import {FormsModule} from '@angular/forms'
 
 @Component({
   selector: 'app-user',
@@ -14,31 +15,31 @@ import { getResponseURL } from '@angular/http/src/http_utils';
 })
 export class UserComponent implements OnInit {
   user: User;
-  repos: Repo;
-  userRepos: any;
-  userName: string;
+    repos: Repo;
+    userRepos: any;
+    userName: string;
 
-  constructor(private profileService: ProfileService) {
+    constructor(private profileService: ProfileService) {
+    }
+   findProfile() {
+
+     this.profileService.updateProfile(this.userName);
+
+     this.profileService.getUserInfo();
+     this.user = this.profileService.user;
+    console.log(this.user);
+
+     this.profileService.getRepoInfo(this.userName);
+     this.userRepos = this.profileService.newRepo;
+   }
+
+    ngOnInit() {
+
+      this.profileService.getRepoInfo(this.userName);
+      this.repos = this.profileService.repo;
+      this.profileService.getUserInfo();
+      this.user = this.profileService.user;
+      // console.log(this.profileService.repo.name);
+    }
+
   }
- findProfile() {
-
-   this.profileService.updateProfile(this.userName);
-
-   this.profileService.getUserInfo();
-   this.user = this.profileService.user;
-  console.log(this.user);
-
-   this.profileService.getRepoInfo(this.userName);
-   this.userRepos = this.profileService.newRepo;
- }
-
-  ngOnInit() {
-
-    this.profileService.getRepoInfo(this.userName);
-    this.repos = this.profileService.repo;
-    this.profileService.getUserInfo();
-    this.user = this.profileService.user;
-    // console.log(this.profileService.repo.name);
-  }
-
-}

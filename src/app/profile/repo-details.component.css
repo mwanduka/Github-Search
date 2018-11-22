@@ -1,0 +1,17 @@
+h2 {
+    font-family: fantasy;
+    font-weight: 400;
+}
+
+.card .card-body {
+  text-align: center;
+}
+
+.btn {
+  border-radius: 5rem;
+}
+
+.tab-style {
+    margin-right: 0.25em;
+    border-color: red;
+}

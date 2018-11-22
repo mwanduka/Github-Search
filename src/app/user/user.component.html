@@ -1,4 +1,4 @@
-<form (keyup)="findCheck()" #userForm="ngForm">
+<form (keyup)="findProfile()" #userForm="ngForm">
    <div class="form-group">
 
        <input type="text" placeholder="Search User" [(ngModel)]="userName" name="userName">
@@ -7,7 +7,7 @@
 </form>
 
      <div class="row">
-       <div class="col-md-3 col-lg-3 " > <img alt="User Pic" src="{{ user.avatar_url }}" class="img-circle img-responsive"> </div>
+       <!-- <div class="col-md-3 col-lg-3 " > <img alt="User Pic" src="{{ user.avatar_url }}" class="img-circle img-responsive"> </div> -->
 
        <div class=" col-md-9 col-lg-9 ">
          <table class="table table-user-information">
@@ -17,41 +17,23 @@
                <td>{{ user.fname}}</td>
              </tr>
              <tr>
-               <td>Repositories:</td>
+               <td>Repo:</td>
                <td>
                  <tr>
                    <td>
                      {{user.repos_url}}
                    </td>
+                </tr>
                    <td>
-                       <a href="{{user.repo_url}}" class="btn btn-primary">View All</a>
+                       <a href="{{user.repos_url}}" class="btn btn-primary">View All</a>
                    </td>
-                 </tr>
-
-               </td>
-
-             </tr>
              <tr>
-               <td>Followers</td>
-               <td>{{ user.followers_url }}</td>
+               <td>Joined</td>
+               <td>{{user.joined_on | dateCount}}</td>
              </tr>
-
-                <tr>
-                    <tr>
-               <td>Following</td>
-               <td>{{ user.following_url}}</td>
-             </tr>
-               <tr>
-               <td>Created</td>
-               <td>{{user.joinedOn | DaysAgo}}</td>
-             </tr>
-
-
-           </tbody>
+           </ tbody>
          </table>
 
-         <a href="{{user.repo_url}}" class="btn btn-primary">View User on Github</a>
-       </div>
-     </div>
+         <a href="{{user.repos_url}}" class="btn btn-primary">View on Github</a>
+       </div>1
    </div>
-</div>
