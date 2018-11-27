@@ -19,7 +19,7 @@ CSS
 Project's live link to the site:
 https://mwanduka.github.io/Github-Search/
 
-## How to Use the App
+## Specs
 A GitHub like application built using Angular 6. I have used Auth0 Library for authentication and authorization.
 
 The features of the app are:
