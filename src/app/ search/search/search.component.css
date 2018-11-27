@@ -1,0 +1,13 @@
+h4 h5 {
+    font-weight:500;
+    margin-top:1.25rem;
+    text-align:center;
+}
+
+.card {
+    padding:1.6rem 1rem;
+    text-align:center;
+    margin-left:4%;
+    margin-right:4%;
+
+}

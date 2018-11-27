@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-md-4 my-2" *ngIf="userDetails">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="userDetails.avatar_url"alt="Card image cap">
+        <div class="card-body text-center">
+        <h4 class="card-title"><strong>{{ userDetails.name }}</strong></h4>
+        <h5> {{ userDetails.bio }} </h5>
+        <div class="card-text">
+          <div class="row" *ngIf="userDetails">
+            <p *ngIf="userDetails.company !== null">
+              <i class="fa fa-building-o mr-2" aria-hidden="true"></i> Company : {{userDetails.company}} </p>
+            <p *ngIf="userDetails.blog !== null">
+              <i class="fa fa-internet-explorer mr-2" aria-hidden="true"></i>Blog : {{userDetails.blog}} </p>
+            <p *ngIf="userDetails.location !== null">
+              <i class="fa fa-globe mr-2" aria-hidden="true"></i> {{userDetails.location}} </p>
+          </div>
+          <div class="row">
+            <div class="col-6">Public Repos : {{ userDetails.public_repos }} </div>
+            <div class="col-6">Public Gists : {{ userDetails.public_gists }} </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-6">Followers : {{ userDetails.followers }} </div>
+            <div class="col-6">Following : {{ userDetails.following }} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 my-2" *ngIf="userDetails">
+      <nav class="nav nav-pills nav-fill">
+      <div heading="Repos" customClass="tab-style" *ngIf="userDetails.public_repos !== 0">
+        <div class="row py-3 bg-transparent" *ngIf="userRepos">
+          <section class="col-md-6 my-2" *ngFor="let repo of userRepos">
+            <div class="card  hoverable">
+              <div class="card-body black-text">
+                <h4>
+                  <a class=" text-capitalize" [href]="repo.html_url" target="_blank" rel="noopener">{{repo.name}}</a>
+                </h4>
+                <p class=" mb-0"> {{repo.description}} </p>
+                <div class="row red-text">
+                  <div class="col-6">
+                    <i class="fa fa-code-fork mr-2" aria-hidden="true"></i>Forks : {{repo.forks}} </div>
+                  <div class="col-6">
+                    <i class="fa fa-eye mr-2" aria-hidden="true"></i>Watchers : {{repo.watchers}} </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <hr class=" dropdown-divider d-block">
+          <div class="flex-center">
+            <pagination pageBtnClass="red" [boundaryLinks]="true" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [totalItems]="repoDemo.length" [itemsPerPage]="5" (pageChanged)="pageChanged($event)"></pagination>
+          </div>
+
+        </div>
+      </div>
+      <div customClass="tab-style" heading="Gists" *ngIf="userDetails.public_gists !== 0">
+        <div class="row py-3 bg-transparent" *ngIf="userGists">
+          <section class="col-md-6 my-2" *ngFor="let gist of userGists">
+            <div class="card  hoverable">
+              <div class="card-body black-text">
+                <h4>
+                  <a [href]="gist.html_url" target="_blank" rel="noopener">{{gist.description}}</a>
+                </h4>
+                <div class="row">
+                  <div class="col-6">
+                    Created At : {{gist.created_at | date}}
+                  </div>
+                  <div class="col-6">
+                    Updated At : {{ gist.updated_at | date }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <hr class=" dropdown-divider d-block">
+          <div class="flex-center">
+            <pagination [boundaryLinks]="true" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [itemsPerPage]="5" [totalItems]="gistTemp.length" (pageChanged)="gistChanged($event)"></pagination>
+          </div>
+        </div>
+      </div>
+    </nav>>
+  </div>
+</div>

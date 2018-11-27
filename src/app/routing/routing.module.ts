@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
-import {AppComponent} from './../app.component'
-import { CommonModule } from '@angular/common';
-import {RouterModule,Routes} from "@angular/router";
-import {GithubComponent} from "../github/github.component";
-import {RepoDetailsComponent} from "../profile/repo-details.component";
-import {UserComponent} from "../user/user.component"
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { ProfileComponent } from '../profile/profile.component';
+import { NotFoundComponent } from '../not-found/not-found.component';
+import { AuthGuard } from '../auth/auth.guard';
+import { SearchComponent } from   '../ search/search/search.component';
 
-// Defining routes
-const routes:Routes = [
-  {path:'', component: GithubComponent},
- {path: 'user/repo?', component: RepoDetailsComponent},
- {path: 'user/profile?', component: UserComponent }
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'search/:user', component: SearchComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forRoot(routes)
   ],
-  declarations: [],
-  exports:[RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class RoutingModule { }
